@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss']
 })
-export class TopBarComponent {
+export class TopBarComponent implements OnInit {
+  selectedLanguage = 'English';
+  languages = ['English', 'French', 'German', 'Spanish'];
+  cartCount = 0;
+  showAccountMenu = false;
 
+  constructor(private cartService: CartService, private cdRef: ChangeDetectorRef) { }
+
+  ngOnInit(): void {
+    this.cartService.cartCount$.subscribe(count => {
+      this.cartCount = count;
+      this.cdRef.detectChanges();
+    });
+  }
 }
