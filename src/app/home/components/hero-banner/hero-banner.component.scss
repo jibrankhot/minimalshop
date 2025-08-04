@@ -1,0 +1,115 @@
+/* hero-carousel.component.scss */
+.hero-carousel-wrapper {
+  position: relative;
+
+  .hero-carousel {
+    position: relative;
+  }
+
+  .banner-slide {
+    height: 460px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 3.75rem;
+    color: #ffffff;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      height: 240px; // 🔻 FINAL mobile height
+      padding: 0 1rem;
+      flex-direction: column;
+    }
+  }
+
+  .banner-content {
+    padding: 1.5rem;
+    max-width: 100%;
+    background: transparent;
+
+    h2 {
+      font-size: 3.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        margin-bottom: 0.4rem;
+      }
+    }
+
+    h5 {
+      font-size: 1.25rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+      }
+    }
+
+    p {
+      font-size: 1.125rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+      }
+    }
+
+    .cta-button {
+      padding: 0.6rem 1.4rem;
+      font-size: 0.85rem;
+      border-radius: 1.8rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .banner-image {
+    width: 85%;
+    max-width: 500px;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    display: block;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      width: 75%; 
+    }
+  }
+
+  .arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    z-index: 1000;
+
+    &.left {
+      left: 1rem;
+    }
+
+    &.right {
+      right: 1rem;
+    }
+
+    &:hover {
+      color: #f5f5f5;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+}

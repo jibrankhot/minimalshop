@@ -1,1 +1,24 @@
-<p>hero-banner works!</p>
+<!-- hero-carousel.component.html -->
+<div class="hero-carousel-wrapper" (click)="toggleArrows()" (swipeleft)="onSwipeLeft(carousel)"
+    (swiperight)="onSwipeRight(carousel)">
+    <ngb-carousel #carousel [showNavigationArrows]="false" [showNavigationIndicators]="true">
+        <ng-template ngbSlide *ngFor="let image of images">
+            <div class="banner-slide" [ngStyle]="{ 'background-image': 'url(' + image.url + ')' }">
+                <div class="banner-content">
+                    <h5>{{ image.subtitle }}</h5>
+                    <h2>{{ image.title }}</h2>
+                    <p>{{ image.description }}</p>
+                    <button class="cta-button">{{ image.cta }}</button>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+
+    <!-- Custom Arrow Controls -->
+    <button *ngIf="showArrows" class="arrow-btn left" (click)="carousel.prev(); $event.stopPropagation()">
+        ‹
+    </button>
+    <button *ngIf="showArrows" class="arrow-btn right" (click)="carousel.next(); $event.stopPropagation()">
+        ›
+    </button>
+</div>
