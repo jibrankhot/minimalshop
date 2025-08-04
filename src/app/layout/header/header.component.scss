@@ -1,0 +1,241 @@
+.main-header {
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: top 0.3s ease;
+
+  &.hidden {
+    top: -100px;
+  }
+
+  .logo {
+    h2 {
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    .logo-box {
+      width: 30px;
+      height: 30px;
+      background-color: #000;
+      border-radius: 5px;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+
+    a,
+    .dropdown-toggle {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+
+      &:hover {
+        color: #00a859;
+      }
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      background: #fff;
+      top: 100%;
+      left: 0;
+      display: none;
+      list-style: none;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      z-index: 10;
+
+      li {
+        margin: 0.25rem 0;
+
+        a {
+          text-decoration: none;
+          color: #333;
+          display: block;
+          padding: 0.25rem 0;
+
+          &:hover {
+            color: #00a859;
+          }
+        }
+      }
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+  }
+
+  .mega-dropdown {
+    position: relative;
+
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      width: 600px;
+      z-index: 999;
+      border: 1px solid #eaeaea;
+    }
+
+    &:hover .mega-menu {
+      display: block;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .col-lg-8 {
+      width: 65%;
+    }
+
+    .col-lg-4 {
+      width: 30%;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  .header-icons {
+    fa-icon {
+      font-size: 1.1rem;
+      color: #333;
+      cursor: pointer;
+
+      &:hover {
+        color: #00a859;
+      }
+    }
+
+    .bag-icon {
+      position: relative;
+      margin-right: 4px;
+
+      .badge {
+        position: absolute;
+        top: -6px;
+        right: -10px;
+        background-color: #00a859;
+        color: white;
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 50%;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .mobile-toggle {
+    display: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    background: none;
+    border: none;
+    color: #333;
+  }
+
+  .mobile-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  @media (max-width: 768px) {
+    .main-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 260px;
+      background: #fff;
+      padding: 2rem 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      transform: translateX(-100%);
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+
+      &.open {
+        transform: translateX(0);
+      }
+
+      .nav-item {
+        width: 100%;
+      }
+
+      a,
+      .dropdown-toggle {
+        width: 100%;
+        padding: 0.75rem 0;
+        text-align: left;
+      }
+
+      .dropdown-menu,
+      .mega-menu {
+        display: block !important;
+        position: static !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin-top: 0.5rem;
+      }
+
+      .dropdown-menu li a {
+        padding-left: 1rem;
+      }
+    }
+
+    .mobile-toggle {
+      display: block;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .main-nav {
+      transform: none !important;
+      position: static;
+      flex-direction: row;
+      background: transparent;
+    }
+  }
+}
+
+.dropdown-menu.animated,
+.mega-menu.animated {
+  animation: fadeInDown 0.3s ease forwards;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
